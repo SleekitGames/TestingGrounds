@@ -2,7 +2,7 @@
 
 #include "TestingGrounds.h"
 #include "FirstPersonCharacter.h"
-#include "TestingGroundsProjectile.h"
+#include "../Weapons/BallProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "GameFramework/InputSettings.h"
 #include "Kismet/HeadMountedDisplayFunctionLibrary.h"
@@ -144,7 +144,7 @@ void AFirstPersonCharacter::OnFire()
 			{
 				const FRotator SpawnRotation = VR_MuzzleLocation->GetComponentRotation();
 				const FVector SpawnLocation = VR_MuzzleLocation->GetComponentLocation();
-				World->SpawnActor<ATestingGroundsProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+				World->SpawnActor<ABallProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 			}
 			else
 			{
@@ -153,7 +153,7 @@ void AFirstPersonCharacter::OnFire()
 				const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
 				// spawn the projectile at the muzzle
-				World->SpawnActor<ATestingGroundsProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+				World->SpawnActor<ABallProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 			}
 		}
 	}
